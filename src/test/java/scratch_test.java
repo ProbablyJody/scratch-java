@@ -9,27 +9,63 @@ class ScratchTest {
     @Test
     void scratch() {
 
-    System.out.println("Primitive - Return:" + primitiveTest());
-
+        System.out.println("Primitive - Return:" + primitiveTest());
+        System.out.println("Object Value - Return:" + objectValueTest());
+        System.out.println("Object Reference - Return:" + objectReferenceTest());
     }
 
     int primitiveTest() {
-        int primitive_example = 1;
+        int primitiveExample = 1;
 
         try {
 
-            System.out.println("Primitive - Init: " + primitive_example);
+            System.out.println("Primitive - Init: " + primitiveExample);
             throw new RuntimeException("re");
 
-        }  catch (RuntimeException re) {
-            System.out.println("Primitive - Catch: " + primitive_example);
-            return primitive_example;
+        } catch (RuntimeException re) {
+            System.out.println("Primitive - Catch: " + primitiveExample);
+            return primitiveExample;
 
         } finally {
-            primitive_example = 2;
-            System.out.println("Primitive - Finally: " + primitive_example);
-            return primitive_example;
+            primitiveExample = 2;
+            System.out.println("Primitive - Finally: " + primitiveExample);
         }
 
+    }
+
+    List<String> objectValueTest() {
+        List<String> objectExample = new ArrayList<String>(List.of("one", "two", "three"));
+
+        try {
+
+            System.out.println("Object Value - Init: " + objectExample.toString());
+            throw new RuntimeException("re");
+
+        } catch (RuntimeException re) {
+            System.out.println("Object Value - Catch: " + objectExample.toString());
+            return objectExample;
+
+        } finally {
+            objectExample.add("four");
+            System.out.println("Object Value - Finally: " + objectExample.toString());
+        }
+    }
+
+    List<String> objectReferenceTest() {
+        List<String> objectExample = new ArrayList<String>(List.of("one", "two", "three"));
+
+        try {
+
+            System.out.println("Object Reference - Init: " + objectExample.toString());
+            throw new RuntimeException("re");
+
+        } catch (RuntimeException re) {
+            System.out.println("Object Reference - Catch: " + objectExample.toString());
+            return objectExample;
+
+        } finally {
+            objectExample = List.of("A", "B", "C");
+            System.out.println("Object Value - Finally: " + objectExample.toString());
+        }
     }
 }
